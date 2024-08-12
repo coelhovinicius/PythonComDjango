@@ -89,6 +89,9 @@ def listar_empresas(request):
         return render(request, 'listar_empresas.html', {'empresas': empresas})'''
 
 def empresa(request, id):
+    if not request.user.is_authenticated:
+        return redirect('/usuarios/logar')
+    
     empresa = Empresas.objects.get(id=id)
     if empresa.user != request.user:
         messages.add_message(request, constants.ERROR, 'Erro de autenticação. Favor tente novamente.')
@@ -111,6 +114,9 @@ def empresa(request, id):
         return render(request, 'empresa.html', {'empresa': empresa, 'documentos': documentos, 'proposta_enviada': proposta_enviada, 'percentual_vendido': int(percentual_vendido), 'total_captado': total_captado, 'valuation_atual': valuation_atual})
     
 def add_doc(request, id):
+    if not request.user.is_authenticated:
+        return redirect('/usuarios/logar')
+    
     empresa = Empresas.objects.get(id=id)
     titulo = request.POST.get('titulo')
     arquivo = request.FILES.get('arquivo')
@@ -143,6 +149,9 @@ def add_doc(request, id):
     return redirect(f'/empresarios/empresa/{empresa.id}')
 
 def excluir_doc(request, id):
+    if not request.user.is_authenticated:
+        return redirect('/usuarios/logar')
+    
     documento = Documento.objects.get(id=id)
     if documento.empresa.user != request.user:
         messages.add_message(request, constants.ERROR, 'Erro de autenticação. Favor tentar novamente.')
@@ -153,6 +162,9 @@ def excluir_doc(request, id):
     return redirect(f'/empresarios/empresa/{documento.empresa.id}')
 
 def add_metrica(request, id):
+    if not request.user.is_authenticated:
+        return redirect('/usuarios/logar')
+    
     empresa = Empresas.objects.get(id=id)
     titulo = request.POST.get("titulo")
     valor = request.POST.get("valor")
@@ -168,6 +180,9 @@ def add_metrica(request, id):
     return redirect(f'/empresarios/empresa/{empresa.id}')
 
 def gerenciar_proposta(request, id):
+    if not request.user.is_authenticated:
+        return redirect('/usuarios/logar')
+    
     acao = request.GET.get('acao')
     pi = PropostaInvestimento.objects.get(id=id)
 

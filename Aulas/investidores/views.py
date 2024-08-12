@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from empresarios.models import Empresas, Documento
+from empresarios.models import Empresas, Documento, Metricas
 from django.http import HttpResponse, Http404
 from .models import PropostaInvestimento
 from django.contrib import messages
