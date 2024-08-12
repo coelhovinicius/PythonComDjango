@@ -1,0 +1,22 @@
+Python_Django
+
+Comandos:
+
+(venv)...> python -m venv venv // Cria um ambiente virtual chamado venv;
+
+(venv)...> venv\Scripts\Activate // Ativa o ambiente virtual;
+
+(venv)...> pip install django // Instalação do Django;
+
+(venv)...> django-admin startproject core . // Cria um projeto Django de nome core na própria pasta que estamos;
+
+(venv)...> python manage.py runserver // Roda o servidor;
+
+(venv)...> python manage.py startapp usuarios // Cria um app de nome usuarios;
+
+Em settings.py do core: incluir o app criado 'usuarios' em INSTALLED_APPS;
+
+Em urls.py do core: incluir o urlpatterns path('usuarios/', include('usuarios.urls'));
+
+
+
