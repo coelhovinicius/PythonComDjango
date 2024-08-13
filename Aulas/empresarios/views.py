@@ -5,7 +5,7 @@ from django.contrib.messages import constants
 from investidores.models import PropostaInvestimento
 from django.http import HttpResponse
 
-# ToDo: Realizar validação de campos
+# ToDo: Realizar validação de campos - OK
 
 def cadastrar_empresa(request):
     if not request.user.is_authenticated:

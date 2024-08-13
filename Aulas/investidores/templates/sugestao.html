@@ -20,18 +20,20 @@
         </div>
         <br>
         <div class="dark-color cont-sugestao">
-            <h3>Tipo de investidor</h3>
+            <h3>Tipo de investidor:</h3>
             <div style="width: 60%">
                 <form action="{% url 'sugestao' %}" method="POST">{% csrf_token %}
-                    <p>Selecione conservador caso busque investimentos de menos risco
-                        e com menor retorno, selecione despojado se prefere correr mais riscos
-                        e ter maiores possíbilidades de retorno.</p>
+                    <br>
+                    <p>Conservador: Investimentos de menor risco, com menor retorno.</p>
+                    <p>Mediano: Investimento de maior quilíbrio entre risco e retorno.</p> 
+                    <p>Despojado: Investimento com risco mais elevado, com maiores possibilidades de retorno.</p>
                     <select name="tipo" id="" class="form-select">
                         <option value="C">Conservador</option>
+                        <option value="M">Mediano</option>
                         <option value="D">Despojado</option>
                     </select>
                     <br>
-                    <h3>Áreas de interesses</h3>
+                    <h3>Áreas de interesse:</h3>
                     <p>Selecione as áreas de mercado que possui interesse em investir</p>
                     <select name="area" id="" class="form-select" multiple>
                         {% for area in areas %}
@@ -39,7 +41,7 @@
                         {% endfor %}
                     </select>
                     <br>
-                    <h3>Valor que deseja investir</h3>
+                    <h3>Valor que deseja investir:</h3>
                     <p>Coloque o valor máximo que deseja investir</p>
                     <input type="number" name="valor" class="form-control" placeholder="00,00">
                     <br>

@@ -18,11 +18,14 @@ def sugestao(request):
 
         if tipo == 'C':
             empresas = Empresas.objects.filter(tempo_existencia='+5').filter(estagio='E')
+
+        if tipo == 'M':
+            empresas = Empresas.objects.filter(tempo_existencia='+2').filter(estagio='E')
         
         elif tipo == 'D':
             empresas = Empresas.objects.filter(tempo_existencia__in=['-6', '+6', '+1']).exclude(estagio='E')
         
-        # ToDo: Criar um tipo genérico - um tipo de empresa "mediano" - Entre o Conservador e o Despojado
+        # ToDo: Criar um tipo genérico - um tipo de empresa "mediano" - Entre o Conservador e o Despojado - OK
         empresas = empresas.filter(area__in=area)
 
         empresas_selecionadas = []
@@ -92,7 +95,7 @@ def assinar_contrato(request, id):
         selfie = request.FILES.get('selfie')
         rg = request.FILES.get('rg')
         
-        # Colocar aprovação dos dados, como verificação de validade de RG e verificação de selfie versus foto do RG
+        # ToDo: Colocar aprovação dos dados, como verificação de validade de RG e verificação de selfie versus foto do RG
         
         pi.selfie = selfie
         pi.rg = rg
